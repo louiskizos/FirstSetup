@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <h1>TITRE</h1>
+    <p>Bienvenu</p>
+    {% for i in personnes%}
+    <h4> {{i.nom}}</h4>
+    <h4> {{i.postnom}}</h4>
+    <a href="/supprimer/{{i.id}}">Supprimer</a>
+    <a href="/updatepage/{{i.id}}">Modifier</a>
+     {% if i.photo%}
+    <img src="{{i.photo.url}}" alt="">
+     {% endif %}
+    {% endfor %}
+    <h3>Formulaire d'enreigistrement</h3>
+    <form method="post" action="{% url 'app:create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+            <legend>AJOUTER UNE PERSONNE</legend>
+        <input type="text" name="nom" placeholder="Entrer le nom" required><br>
+        <input type="text" name="postnom" placeholder="Entrer le post nom" required><br>
+        <input type="text" name="prenom" placeholder="Entrer le prenom" required><br>
+        <input type="text" name="age" placeholder="Entrer l'age" required><br>
+        <input type="text" name="adresse" placeholder="Entrer l'adresse" required><br>
+        <input type="submit"  value="Modificarion"><br>
+        <input type="file" name="image" id="">
+    </fieldset>
+    </form>
+</body>
+</html>

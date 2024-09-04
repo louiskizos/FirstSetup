@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/updatepersonne/{{personnes.id}}">
+        {% csrf_token %}
+        <fieldset>
+            <legend>MODIFIER UNE PERSONNE</legend>
+        <input type="text" name="nom" placeholder="Entrer le nom"  value="{{personnes.nom}}" required><br>
+        <input type="text" name="postnom" placeholder="Entrer le post nom" value="{{personnes.postnom}}" required><br>
+        <input type="text" name="prenom" placeholder="Entrer le prenom" value="{{personnes.prenom}}" required><br>
+        <input type="text" name="age" placeholder="Entrer l'age" value="{{personnes.age}}" required><br>
+        <input type="text" name="adresse" placeholder="Entrer l'adresse"  value="{{personnes.adresse}}" required><br>
+        <button type="submit">Modificarion</button><br>
+    </fieldset>
+    </form>
+</body>
+</html>
